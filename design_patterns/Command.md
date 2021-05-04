@@ -119,8 +119,6 @@ public:
 ```
 
 
-
-
 ## Undo/ Redo
 There are two requirements to have undo/redo capabilities:
 - the command should be aware of the previous state before the command runs and that info should be stored. 
@@ -173,7 +171,7 @@ public:
 
 <details>
 
-<summary>Hold a snapshot of the entire current state of the receiver and then run the command [Memento]</summary>
+<summary>Hold a snapshot of receiver's entire or partial current state and then run the command [Memento]</summary>
 
 </details>
 
@@ -212,9 +210,13 @@ public:
 ```
 
 ## Template approach
+Using `std::function` provides more felxibility. Also binding lets the part or all of the arguments to be stored.
+
 
 
 ## References
 - Modern C++ Design, Andrei Alexandrescu
 - Design Patterns - Elements of Reusable Object-Oriented Software, Gamma et. al., 1994
 - [https://gameprogrammingpatterns.com/command.html](https://gameprogrammingpatterns.com/command.html)
+- [Undo/Redo Redux - Al Stevens](https://www.drdobbs.com/cpp/c-programming/184410722?queryText=undo%252Fredo%2Bredux)
+- [An Unlimited Undo/Redo Stack Pattern For PowerBuilder](https://www.drdobbs.com/parallel/an-unlimited-undoredo-stack-pattern-for/184410214)
