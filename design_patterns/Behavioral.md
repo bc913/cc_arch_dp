@@ -1,14 +1,18 @@
-# Command
-## Intro
+# Behavioral Patterns
+- [Command](#Command)
+- [Mediator](#Mediator)
+
+
+## **Command**
 This pattern can be considered as object oriented encapsulation of operations(tasks, requests). This pattern can be used within the following contexts:
 - Undo/redo
 - Command pipelines/streams/queue
 - Logging
 - Transactions
 
-## Usage
+### **Usage**
 
-### Stateless
+#### Stateless
 ```cpp
 class ICommand{
 public:
@@ -45,7 +49,7 @@ std::unique_ptr<ICommand> command = nullptr;
 command->execute();
 ```
 
-### Receiver as argument
+#### Receiver as argument
 The receiver object is passed as argument. This approach is useful in network gaming i.e. passing the receiver object and the series(collection) of command to the network seperately.
 
 ```cpp
@@ -73,7 +77,7 @@ public:
 
 ```
 
-### Stateful commands
+#### Stateful commands
 The command objects has state by holding the receiver object as data member.
 
 ```cpp
@@ -119,12 +123,12 @@ public:
 ```
 
 
-## Undo/ Redo
+### **Undo/Redo**
 There are two requirements to have undo/redo capabilities:
 - the command should be aware of the previous state before the command runs and that info should be stored. 
 - The client should keep track of executed commands through linked-list like structure to execute undo/redo in the right order.
 
-### Keeping track of the previous state
+#### Keeping track of the previous state
 There are several ways to achieve this:
 <details>
 <summary>Hold the required bits of info from the current state of the receiver and then run the command.</summary>
@@ -182,10 +186,10 @@ public:
 </details>
 
 
-### Command history
+#### Command history
 The commands have to be kept in a linked-list like data structure. We have the keep an iterator on the last executed command in the list and rewind/forward as needed.
 
-## Macro Command
+### **Macro Command**
 This is a composition of multiple commands under a single command class.
 ```cpp
 class MacroCommands : public ICommand{
@@ -209,9 +213,13 @@ public:
 };
 ```
 
-## Template approach
+### **Template approach**
 Using `std::function` provides more felxibility. Also binding lets the part or all of the arguments to be stored.
 
+## **Mediator**
+It is an abstraction mechanism for complex communication of same level objects. In some cases, the different types of objects in the **same** layer has to communicate with each other or warn others about the changes occured within. If the number of objects is numereous, this will bring an huge amount of communication code within the object's class definitions and also will break encapsulation because each component will have to know about the ohter one to communicate.
+
+In order to alleviate this burden, *Mediator* class come into the picture and handles communications between each other. This is a two-way communication so each component will only know the mediator and mediator will know all the communicated components. This will decouples the same level components and centralize the communications. It also abstracts how object will communicate.
 
 
 ## References
