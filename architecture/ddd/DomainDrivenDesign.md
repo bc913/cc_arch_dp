@@ -1,6 +1,5 @@
 # Domain Driven Design
-github.com/ardalis/pluralsight-ddd-fundamentals
-- Domain Layer
+- [Domain Layer](DomainLayer.md)
 - Infrastructure
 - Shared Kernel
 - Persistence
@@ -36,6 +35,10 @@ Ways :
 
 ## Microservices
 Bounded Contexts, Microservices and Everything in bewtween - Vladik Khononov
+
+## Open source projects
+- [github.com/ardalis/pluralsight-ddd-fundamentals](github.com/ardalis/pluralsight-ddd-fundamentals)
+
 ## References
 - [Domain-Driven Design Fundamentals by Julie Lerman & Steve Smith]
 
