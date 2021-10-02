@@ -3,8 +3,8 @@ It represents the business logic with its rules, concepts and information. Domai
 
 Elements of the domain layer
 - Domain Model:
-    - Value Objects
-    - Entity
+    - [Entity](#Entity)
+    - [Value Objects](#Value-Objects)
 - Domain Services
 - Aggregates
 - Domain Events
@@ -27,12 +27,13 @@ These domain models can be implemented in two ways (Depending on the business lo
 
 2. Rich (DDD Way): It combines the data with behaviors. This type of model can better represent the business model when the business logic is complex.
 
-### **Entity**
+### Entity
 It is a domain class with an identity for tracking, locate, retrieve and store. Its main features are:
 - It is defined by its identity. Should be unique throughout the application.
 - The identity does not tie to the property values.
 - Mutable
 - Usually associated with the use-case approach.
+- Prefer value objects over primitive types as their fields.
 
 #### Implementation details
 
@@ -119,6 +120,9 @@ These are the objects defined by its value. It exposes the following features:
 - Compare using all values
 - May have methods/behaviors but they should cause NO side effects. It should only compute things rather than changing the state of the objects. They are immutable.
 - If a change for the state is required, create a new instance.
+- Used as a property of an entity/aggregate
+- Their lifetime should depend on the parent.
+- Do NOT introduce a seperate table for value objects. Persist their fields into the parent object's table.
 
 
 #### Implementation details
@@ -204,6 +208,7 @@ public class AnimalType : ValueObject
 If you can't find an entity or value object to place some behaviour or logic, you can define stateless services within the domain called `services`. It can be considered as free functions in C++.
 
 - Acts as an interface between the domain model objects within the same bounded context. (Controls cross-aggregate behavior)
+- Typically work on multiple domain models.
 - Usually stateless but might have side effects on the objects it operates on.
 - Create when you need it. Try not to use the previously created service.
 - They can be used for orchestrating the specific workflows.
@@ -269,10 +274,13 @@ Sometimes same business logic can be achieved with both using domain models(aggr
 - Example: Booking a room/appointment can be achieved with both domain aggregates and domain services.
 ## Domain Events
 - To capture an occurence of something that happened in the domain
-- Represent the past
+- Represent the past so use past tense naming.
 - Typically immutable
-
-1. Create interface or base types for Handlers & Domain event
+- Attach as little data as possible
+- Do not store entity in the event. 
+    - Handler as different BC in the same process: If the consumer BC knows about the entity pass id, otherwise pass the required data in primitive or value object format. 
+### Implementation
+1. Define interface or base types for Handlers & Domain event
 ```csharp
 // 1. Custom
 public interface IDomainEvent
@@ -282,17 +290,29 @@ public interface IDomainEvent
 // Option 2: Use .net event mechanism
 ```
 2. Provide a specific implementation for an event
-3. Create Handlers for each event
-4. Register the events on the associated entity
-5. Raise them when required.
+3. Implement Handlers for each event
+```csharp
+public interface IDomainEventHandler<T> where T : IDomainEvent
+{
+    public void Handle();
+}
+```
+4. Create and Register the events on the associated entity. They are stored as list. (**This is entity's responsibility.**)
+5. Raise them when required. No need to raise the events immediately after their creation. (**Usually, the infrastructure is responsible to raise the event.**)
+
+### Guidelines
+- Raise the events after db Commit is sucessfully completed.
 
 ### Event handling
 Now, the question is who is handling this event? Who is(are) the listener(s)? It usually depends on the business logic but these questions typically has two answers.
 
-- Listener in the same bounded context (process): Raising and handling the event occur in the same memory space. This usually happens when the listener is another aggregate or domain service.
+- Listener in the same bounded context (process): Raising and handling the event occur in the same memory space. This usually happens when the listener is another aggregate or domain service. If there is an anti-corruption layer, the listener can only handle the events via proxy calls.
 
-- Listener in different bounded context: If this is the case, a communication contract is required between the bounded contexts. This can be achieved with several methods:
+- Listener in different bounded context (Microservices): If this is the case, a communication contract is required between the bounded contexts. No need to establish an anti-corruption layer.
+
+This can be achieved with several methods:
     - Http
+    - SOaP
     - Grpc
     - Message Queue
     - Sockets
