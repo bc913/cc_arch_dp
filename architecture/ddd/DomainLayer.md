@@ -16,6 +16,9 @@ This is the core of the business logic. The core implementation of the business 
 - Defined by its values (Value Objects)
 - Aggregates
 
+Main Features:
+- Database agnostic (Persistable but knows nothing about persistence)
+
 These domain models can be implemented in two ways (Depending on the business logic):
 
 1. Anemic (CRUD way): It only focuses on the state (attribute) of the object. This is quite acceptable if you only deal with CRUD operations. There is nothing wrong with this. It is still usable within DDD. It has little or no behavior. Property bags of getters or setters. The behaviors are shifted to the domain services which sits top of the domain model.
@@ -26,9 +29,10 @@ These domain models can be implemented in two ways (Depending on the business lo
 
 ### **Entity**
 It is a domain class with an identity for tracking, locate, retrieve and store. Its main features are:
-- It is defined by its identity.
+- It is defined by its identity. Should be unique throughout the application.
 - The identity does not tie to the property values.
 - Mutable
+- Usually associated with the use-case approach.
 
 #### Implementation details
 
@@ -36,6 +40,7 @@ It is a domain class with an identity for tracking, locate, retrieve and store. 
 - There should only be one record to represent a particular entity in a bounded context.
 - It should definitely lies within the `Single Responsibility Principle`. It's main responsibility is identity and business logic.
 - Usually requires a (private) default ctor for ORM compatibility such as EF Core.
+- Make the fields read-only and set/update the fields through methods.
 
 ```csharp
 public abstract class BaseEntity<IdType>
@@ -61,7 +66,7 @@ public class Patient : BaseEntity<int>
 
 }
 ```
-If these entites have also live within another bounded contexts, define them as readonly. because they are managed in other context.
+If these entites have also to live within another bounded contexts, define them as readonly because they are managed in other context.
 
 *Rich Model*: 
 
@@ -110,6 +115,7 @@ These are the objects defined by its value. It exposes the following features:
 - Identity is based on composition of their property values
 - Immutable
 - Acts as a whole
+- More precise and accurate than primitive types
 - Compare using all values
 - May have methods/behaviors but they should cause NO side effects. It should only compute things rather than changing the state of the objects. They are immutable.
 - If a change for the state is required, create a new instance.
@@ -120,6 +126,7 @@ These are the objects defined by its value. It exposes the following features:
 - The exposed properties should be read-only. No public setters.
 - No methods to change the state.
 - Methods only allowed to compute derived values.
+- Provide Equals, GetHashCode and comparison/equality operator overloads based on their values.
 
 ```csharp
 // Base class
@@ -132,7 +139,7 @@ public abstract class ValueObject
 
 #### Example use cases
 - Usually treated as a property of an entity.
-- `string`, `date` and `money` classes are typical examples.
+- `string`, `date`, `money`, `temperature` classes are typical examples.
 
 ```csharp
 public class DateTimeRange : ValueObject
@@ -191,28 +198,34 @@ public class AnimalType : ValueObject
     }
 }
 ```
+
+- Keep domain and persistence models seperate so you need an adapter/mapper between these models to communicate.
 ## Domain Services
 If you can't find an entity or value object to place some behaviour or logic, you can define stateless services within the domain called `services`. It can be considered as free functions in C++.
 
-- Acts as an interface between the other domain model objects within the same bounded context.
+- Acts as an interface between the domain model objects within the same bounded context. (Controls cross-aggregate behavior)
 - Usually stateless but might have side effects on the objects it operates on.
 - Create when you need it. Try not to use the previously created service.
 - They can be used for orchestrating the specific workflows.
 - Do not overuse. It might violate the DDD main principle.
-
+- Proxies to external services
+- May consume services from the external layers i.e. infrastructure.
 
 ## Aggregates
 Provides association between entities. They are used to handle business complex logic.
 - Transactional graph of entities/value objects.
-- Consists one or more entites and value objects that change/act together.
+- Consists of one or more entities that act as a unit against queries and commands(read & writes). Transactional consistency.(Cascade update/delete)
 - Therefore, handle them as a unit for data changes(single transaction) and seek the consistency between them.
 - Controls/Handles association/dependencies between entities.
 - Handles complex business logic.
 - Data changes to an aggregate should be A(tommic), C(onsistent), I(solated) and D(urable).
+- One repository per aggregate.
+- Interaction with other aggregates defines the business logic.
 
 ### Aggregate Root
 Every aggregate must have a root which is the Parent object of the all members of the aggregate. It is quite possible an aggregate consists of one entity which is also an aggregate root.
 - Responsible to maintain its invariants. It should always be true.
+- Accessing to non-root entities only possible through aggregate root. Acts as a mediator.
 
 ### How to choose aggregate root?
 Ask these questions to determine the aggregate root:
@@ -247,20 +260,45 @@ Client [root] (Name and Patients)
 Patient (Non - Root) holds clientId
 */
 ```
+- Define aggregate root as base abstract class or interface.
 
+
+## Domain Models vs Domain Services. Which one to choose?
+Sometimes same business logic can be achieved with both using domain models(aggregates) and services. However, always try to achieve this using aggregates.
+- If that does not work, use domain services.
+- Example: Booking a room/appointment can be achieved with both domain aggregates and domain services.
 ## Domain Events
 - To capture an occurence of something that happened in the domain
 - Represent the past
 - Typically immutable
 
 1. Create interface or base types for Handlers & Domain event
-2. Define Event
+```csharp
+// 1. Custom
+public interface IDomainEvent
+{
+
+}
+// Option 2: Use .net event mechanism
+```
+2. Provide a specific implementation for an event
 3. Create Handlers for each event
 4. Register the events on the associated entity
+5. Raise them when required.
 
-ardalis/domaineventsconsole
-ardalis/CleanArchitecture [starting template]
+### Event handling
+Now, the question is who is handling this event? Who is(are) the listener(s)? It usually depends on the business logic but these questions typically has two answers.
 
+- Listener in the same bounded context (process): Raising and handling the event occur in the same memory space. This usually happens when the listener is another aggregate or domain service.
+
+- Listener in different bounded context: If this is the case, a communication contract is required between the bounded contexts. This can be achieved with several methods:
+    - Http
+    - Grpc
+    - Message Queue
+    - Sockets
+    - Publisher/Subscriber
+
+and `Service Bus` is responsible for to deliver the raised information to the listener in text (xml or json) or binary format depending on your contract.
 ## References
 
 
