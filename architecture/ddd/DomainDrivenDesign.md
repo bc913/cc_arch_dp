@@ -1,52 +1,29 @@
 # Domain Driven Design
+
 - [Domain Layer](DomainLayer.md)
-- Infrastructure
+- Infrastructure Layer: Layer to fuel the system not binding the system to a specific product. Concrete details of technologies.
+    - [Persistence](PersistenceLayer.md)
+    - Logging & Tracing
+    - Caching
+    - Security
+    - Inversion of control
+    - Networking
 - Shared Kernel
-- Persistence
-- Communication between Bounded Contexts
-
-
-## Repositories
-- Use different repos for aggregate roots and CRUD only data models
-- Repo focuses on persistence
-- Use database profiling (i.e. Azure data studio, Hibernating Rhinos, RavenDB, Azure Cosmos DB and Hibernate DB ) or logging to surface problems 
-- Use/Pass predicates or specifications(preferred) in repos
-
-## Specification
-github.com/ardalis/Specification
-
-Avoid In-Memory Databases for tests
-jimmybogard.com/avoid-in-memory-databases-for-tests/
-
-## Anti-Corruption Layer
-- Translate between foreign systems (bounded context)' models and your own
-- Simplifies communication between systems
-- MAy employ design patterns such as facade or adapter
-
-[Lost in bounded context tranlations with Julie, Idnu, Micheal and Nick](youtu.be/u-5sKvh48-g)
-
-
-## Shared 
-### Eventual consistency
-When two or more syteems or bounded contexts do not need to be synced immediately but the changes will eventually get to their destination.
-
-Ways :
-- Publisher/subscriber
-
-## Microservices
-Bounded Contexts, Microservices and Everything in bewtween - Vladik Khononov
+- Application Layer
+- [Communication between/within Bounded Contexts](BoundedContextCommunication.md)
 
 ## Open source projects
 - [github.com/ardalis/pluralsight-ddd-fundamentals](github.com/ardalis/pluralsight-ddd-fundamentals)
+- [ardalis/domaineventsconsole]
+- [ardalis/CleanArchitecture]
 
 ## References
 - [Domain-Driven Design Fundamentals by Julie Lerman & Steve Smith]
-
-### Domain Layer
+- [Modern Software Architecture]
 
 - [Services in DDD - Jimmy Bogard](bit.ly/1ifravE)
 
-
+- vimeo.com/125769142
 
 - [](domainlanguage.com)
 - [Layers, Onions, Ports, Adapters: it's all the same by Mark Seemann](https://blog.ploeh.dk/2013/12/03/layers-onions-ports-adapters-its-all-the-same/)
