@@ -10,4 +10,8 @@ This repo consists of my notes & code snippets about `Clean Code`, `Architecture
 
 ## Design Patterns
 - [Structural](design_patterns/Structural.md)
-- [Behavioral](design_patterns/Behavioral.md)
+- [Behavioral]
+    - [Command](design_patterns/behavioral/command.md)
+    - [Mediator](design_patterns/behavioral/mediator.md)
+    - [Strategy](design_patterns/behavioral/strategy.md)
+
