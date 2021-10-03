@@ -273,38 +273,60 @@ Sometimes same business logic can be achieved with both using domain models(aggr
 - If that does not work, use domain services.
 - Example: Booking a room/appointment can be achieved with both domain aggregates and domain services.
 ## Domain Events
+- They are basically messages that tells something happened.
 - To capture an occurence of something that happened in the domain
 - Represent the past so use past tense naming.
-- Typically immutable
+- Typically immutable (no behavior and no side effect)
 - Attach as little data as possible
 - Do not store entity in the event. 
-    - Handler as different BC in the same process: If the consumer BC knows about the entity pass id, otherwise pass the required data in primitive or value object format. 
+    - Handler as different BC in the same process: If the consumer BC knows about the entity pass id, otherwise pass the required data in primitive or value object format.
+- Do NOT design events and handlers for failures. Always assume they are successful. 
 ### Implementation
+The implementation can be achieved using built-in .NET event mechanism. If custom implementation is chosen, follow the route:
+
 1. Define interface or base types for Handlers & Domain event
 ```csharp
 // 1. Custom
-public interface IDomainEvent
+public interface IDomainEvent  INotification
 {
-
+    DateTimeOffset DateOccurred { get; }
 }
-// Option 2: Use .net event mechanism
+// 2. Custom
+public abstract class BaseDomainEvent : INotification
+{
+    public DateTimeOffset DateOccurred { get; protected set; } = DateTimeOffset.UtcNow;
+}
+
 ```
-2. Provide a specific implementation for an event
-3. Implement Handlers for each event
+2. Provide a specific implementation for an event. Capture sufficient information that handler can process in a healthy way.
+```csharp
+public class AppointmentScheduledEvent : BaseDomainEvent
+{
+    // Try to be lightweight
+}
+```
+3. Implement Handlers for each event implementation
 ```csharp
 public interface IDomainEventHandler<T> where T : IDomainEvent
 {
-    public void Handle();
+}
+
+public class AppointmentScheduledEventHandler : IDomainEventHandler<AppointmentScheduledEvent>
+{
+    public Task Handle(AppointmentScheduledEvent notification, CancellationToken cancellationToken )
+    {
+
+    }
 }
 ```
-4. Create and Register the events on the associated entity. They are stored as list. (**This is entity's responsibility.**)
-5. Raise them when required. No need to raise the events immediately after their creation. (**Usually, the infrastructure is responsible to raise the event.**)
+4. Register the events on the associated entity. They are stored as list. (**This is entity's responsibility.**)
+5. Raise them (Dispatching) when required. No need to raise the events immediately after their creation. (**Usually, the infrastructure (or persistence ) is responsible to raise the event.**)
 
 ### Guidelines
 - Raise the events after db Commit is sucessfully completed.
 
 ### Event handling
-Now, the question is who is handling this event? Who is(are) the listener(s)? It usually depends on the business logic but these questions typically has two answers.
+Event handlers do not need to know where the event comes from. Now, the question is who is handling this event? Who is(are) the listener(s)? It usually depends on the business logic but these questions typically has two answers.
 
 - Listener in the same bounded context (process): Raising and handling the event occur in the same memory space. This usually happens when the listener is another aggregate or domain service. If there is an anti-corruption layer, the listener can only handle the events via proxy calls.
 
