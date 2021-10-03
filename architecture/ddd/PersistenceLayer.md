@@ -57,6 +57,7 @@ It is primaryly used for:
 
 Main Features:
 - Works well with EF Core.
+- EF Core lazy loading leads to N+1 query problem. Use this pattern to avoid this.
 
 - [github.com/ardalis/Specification](github.com/ardalis/Specification)
 
