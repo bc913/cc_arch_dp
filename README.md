@@ -9,8 +9,11 @@ This repo consists of my notes & code snippets about `Clean Code`, `Architecture
 - [Event Sourcing](architecture/EventSourcing.md)
 
 ## Design Patterns
-- [Structural](design_patterns/Structural.md)
-- [Behavioral]
+- Structural
+    - [Facade](design_patterns/structural/facade.md)
+    - [Flyweight](design_patterns/structural/flyweight.md)
+    - [Proxy](design_patterns/structural/proxy.md)
+- Behavioral
     - [Command](design_patterns/behavioral/command.md)
     - [Mediator](design_patterns/behavioral/mediator.md)
     - [Strategy](design_patterns/behavioral/strategy.md)
