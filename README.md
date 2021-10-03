@@ -5,6 +5,7 @@ This repo consists of my notes & code snippets about `Clean Code`, `Architecture
 
 ## Architecture
 - [Domain Driven Design](architecture/ddd/DomainDrivenDesign.md)
+- [CQRS](architecture/CQRS.md)
 
 ## Design Patterns
 - [Structural](design_patterns/Structural.md)
