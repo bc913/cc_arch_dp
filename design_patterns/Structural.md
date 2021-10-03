@@ -1,12 +1,6 @@
 # Structural Patterns
-- [Facade](#Facade)
 - [Flyweight](#Flyweight)
 - [Proxy](#Proxy)
-
-## Facade
-In contrast to mediator, Facade provides interface (abstraction) between upper&higher layers or dependencies. If a client(layer) wants to communicate with sub layers, usgin Facade as a single interface to minimize dependencies and communication. It provides single interface and clients communicate with Facade layer rather than sub layers.
-
-As opposed to Mediator, sub-layers would not know anything about the clients and the Facade. Clients can not access directly to the sub-layers. They are usually implemented as Singleton.
 
 ## Flyweight
 This main purpose of this pattern is to gain efficiency in memory usage. The logic lies on the idea of storing and using the shared data in a seperate class for widely used and has to be generated objects. The instances of shared data classes are called flyweight.
