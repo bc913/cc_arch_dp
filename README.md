@@ -17,4 +17,6 @@ This repo consists of my notes & code snippets about `Clean Code`, `Architecture
     - [Command](design_patterns/behavioral/command.md)
     - [Mediator](design_patterns/behavioral/mediator.md)
     - [Strategy](design_patterns/behavioral/strategy.md)
+- Creational
+    - [Singleton](design_patterns/creational/singleton.md)
 
