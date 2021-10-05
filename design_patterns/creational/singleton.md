@@ -9,6 +9,19 @@ A Singleton is a class designed to only have one single instance during a lifeti
 - Single, parameterless, private ctor, mark as sealed(C#) or final(C++)
 - Private static field holds the only reference to the instance and access is allowed through public static `Instance()` method.
 
+## Discussions
+
 ## C# - .NET Implementations
+### Thread-unsafe
+
+### Naive thread-safe
+
+### Static class
+
+
+### Wrapping Lazy<T>
 
 ## C++ Implementations
+
+
+## References
