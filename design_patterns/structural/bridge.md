@@ -99,3 +99,4 @@ This pattern is also known as an utilized version of `Handle/Body` pattern which
 - [https://sites.google.com/a/gertrudandcope.com/info/Publications/Patterns/C--Idioms](https://sites.google.com/a/gertrudandcope.com/info/Publications/Patterns/C--Idioms)
 - [How to implement the pimpl idiom by using unique_ptr - fluentcpp.com](https://www.fluentcpp.com/2017/09/22/make-pimpl-using-unique_ptr/)
 - [Pimpl idiom with modern C++](https://bitboom.github.io/pimpl-idiom)
+- [The Pimpl Pattern: What You Should Know](https://dzone.com/articles/the-pimpl-pattern-what-you-should-know)
