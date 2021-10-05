@@ -13,6 +13,7 @@ This repo consists of my notes & code snippets about `Clean Code`, `Architecture
     - [Facade](design_patterns/structural/facade.md)
     - [Flyweight](design_patterns/structural/flyweight.md)
     - [Proxy](design_patterns/structural/proxy.md)
+    - [Bridge](design_patterns/structural/bridge.md)
 - Behavioral
     - [Command](design_patterns/behavioral/command.md)
     - [Mediator](design_patterns/behavioral/mediator.md)
