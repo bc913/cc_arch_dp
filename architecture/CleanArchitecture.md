@@ -46,18 +46,25 @@
 ## Various styles of clean architecture
 The Clean Architecture is defined in different forms by various experts. All of them have only one purpose to do so: `Separation of Concerns`. 
 
-## Traditional (Three-Tier) Architecture
+The most common and known ones are as follow:
+### Traditional (Three-Tier) Architecture
 <p align="center">
   <img width="600" height="395" src="../images/architectures/JeffreyPalermoTraditionalArch.png">
 </p>
 
-## [Hexagonal Architecture by Alistair Cockburn](https://alistair.cockburn.us/Hexagonal+architecture)
+### [Hexagonal Architecture by Alistair Cockburn](https://alistair.cockburn.us/Hexagonal+architecture)
 
 <p align="center">
   <img width="934" height="631" src="../images/architectures/AlistairCockburnHexaArch.png">
 </p>
 
-## [Onion Architecture by Jeffrey Palermo](https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/)
+<p align="center">
+  <img width="1055" height="669" src="../images/architectures/SteveSmithHexagonalArch.png">
+</p>
+
+Hexagonal architecture is also known known as `Ports/Adapters`. Check this [link](https://www.dossier-andreas.net/software_architecture/ports_and_adapters.html) for details. 
+
+### [Onion Architecture by Jeffrey Palermo](https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/)
 
 <p align="center">
   <img width="669" height="506" src="../images/architectures/JeffreyPalermoOnionArch.png">
@@ -67,12 +74,20 @@ The Clean Architecture is defined in different forms by various experts. All of 
   <img width="684" height="464" src="../images/architectures/JeffreyPalermoOnionArchFlattened.png">
 </p>
 
+<p align="center">
+  <img width="740" height="691" src="../images/architectures/SteveSmithOnionArch.png">
+</p>
 
-## [Clean Architecture by Uncle Bob](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+
+### [Clean Architecture by Uncle Bob](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 <p align="center">
   <img width="661" height="503" src="../images/architectures/UncleBobCleanArch.png">
 </p>
 
+### [Clean Architecture by Steve Smith](https://youtu.be/joNTQy-KXiU?t=3545)
+<p align="center">
+  <img width="1161" height="580" src="../images/architectures/SteveSmithCleanArch.png">
+</p>
 ## Open Source Projects
 - [https://github.com/ardalis/CleanArchitecture](https://github.com/ardalis/CleanArchitecture)
 - [https://github.com/matthewrenze/clean-architecture-demo](https://github.com/matthewrenze/clean-architecture-demo)
