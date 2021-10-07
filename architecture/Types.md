@@ -1,5 +1,10 @@
 # Architecture Types
 
+## Traditional (Three-Tier) Architecture
+<p align="center">
+  <img width="600" height="395" src="../images/architectures/JeffreyPalermoTraditionalArch.png">
+</p>
+
 ## [Hexagonal Architecture by Alistair Cockburn](https://alistair.cockburn.us/Hexagonal+architecture)
 
 <p align="center">
