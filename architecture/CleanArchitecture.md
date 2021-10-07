@@ -145,6 +145,19 @@ Hexagonal architecture is also known known as `Ports/Adapters`. Check this [link
   - EF Core configurations are handled in this layer.[Youtube](https://youtu.be/dK4Yb6-LxAk?t=2165)
   - Provide an extension implementation to be used by dependency injection(https://youtu.be/dK4Yb6-LxAk?t=2373).
 
+## Useful APIs
+- [MediatR](https://github.com/jbogard/MediatR)
+- [AutoMapper](https://github.com/AutoMapper/AutoMapper)
+- [FluentValidation](https://github.com/FluentValidation/FluentValidation)
+- [Ardalis.GuardClauses](https://github.com/ardalis/GuardClauses)
+- [Ardalis.ApiEndpoints](https://github.com/ardalis/ApiEndpoints)
+- [Shouldly](https://github.com/shouldly/shouldly)
+- [CsvHelper](https://github.com/JoshClose/CsvHelper)
+- [NSwag](https://github.com/RicoSuter/NSwag)
+- [PapercutStmp - Email server](https://github.com/ChangemakerStudios/Papercut-SMTP)
+  - [Docker containerized PapercutStmp](https://hub.docker.com/r/jijiechen/papercut)
+
+
 ## Open Source Projects
 - [https://github.com/ardalis/CleanArchitecture](https://github.com/ardalis/CleanArchitecture)
 - [https://github.com/matthewrenze/clean-architecture-demo](https://github.com/matthewrenze/clean-architecture-demo)
