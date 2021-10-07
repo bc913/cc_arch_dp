@@ -172,3 +172,21 @@ Hexagonal architecture is also known known as `Ports/Adapters`. Check this [link
 - [Gerg Young](https://goodenoughsoftware.net)
 - [Udi Dahan](http://udidahan.com)
 - [Vaugh Vernon](vaughvernon.com)
+
+## Videos
+### Jason Taylor
+- [Clean Architecture with ASP.NET Core 3.0 - Jason Taylor - NDC Sydney 2019](https://www.youtube.com/watch?v=5OtUm1BLmG0)
+- [Clean Architecture with ASP.NET Core 3.0 • Jason Taylor • GOTO 2019](https://www.youtube.com/watch?v=dK4Yb6-LxAk)
+- [Clean Testing: Clean Architecture with .NET Core - Jason Taylor - NDC Sydney 2020](https://www.youtube.com/watch?v=hV43fiHYBb4)
+### Steve 'Ardalis' Smith
+- [Visual Studio Toolbox Live - Clean Architecture for ASP.NET Core Apps](https://www.youtube.com/watch?v=GYZcds1FjEM)
+- [Clean Architecture with ASP.NET Core with Steve "Ardalis" Smith (2020-06-01)](https://www.youtube.com/watch?v=joNTQy-KXiU)
+- [Clean Architecture with ASP.NET Core by Steve Smith | BRDNUG June 2021](https://www.youtube.com/watch?v=D6IEnMTuawA)
+
+### Jimmy Bogard
+- [Vertical Slice Architecture](https://www.youtube.com/watch?v=SUiWfhAhgQw)
+### Ian Cooper
+- [Implementing the Clean Architecture in .NET Core - Ian Cooper](https://www.youtube.com/watch?v=IAcxetnsiCQ)
+- [On .NET Live - Commands, Queries, and Clean Architecture](https://www.youtube.com/watch?v=IRvDGPbxdTs)
+### Misc
+- [Clean Architecture - .NET Core 5 Web API Microservices - Fundamentals](https://www.youtube.com/watch?v=TEeb0Hba8jI)
