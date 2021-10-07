@@ -159,8 +159,12 @@ Hexagonal architecture is also known known as `Ports/Adapters`. Check this [link
 
 
 ## Open Source Projects
-- [https://github.com/ardalis/CleanArchitecture](https://github.com/ardalis/CleanArchitecture)
-- [https://github.com/matthewrenze/clean-architecture-demo](https://github.com/matthewrenze/clean-architecture-demo)
+- [Clean Architecture template by Steve Smith](https://github.com/ardalis/CleanArchitecture)
+- [Clean Architecture Demo for PluralSight by Matthew Renze](https://github.com/matthewrenze/clean-architecture-demo)
+- [Clean Architecture Solution Template by Jason Taylor](https://github.com/jasontaylordev/CleanArchitecture)
+- [Northwind Traders Sample Project by Jason Taylor](https://github.com/jasontaylordev/NorthwindTraders)
+- [Microsoft - eShop on the web - Simple](https://github.com/dotnet-architecture/eShopOnWeb)
+- [Microsoft - eShop on Containers w/ Microservices - Advanced](https://github.com/dotnet-architecture/eShopOnContainers)
 
 ## Other References
 - [Layers, Onions, Ports, Adapters: it's all the same by Mark Seemann](https://blog.ploeh.dk/2013/12/03/layers-onions-ports-adapters-its-all-the-same/)
