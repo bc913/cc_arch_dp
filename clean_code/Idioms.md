@@ -1,5 +1,6 @@
 # Idioms
 
+## DRY - Don't Repeat Yourself
 ## YAGNI
 YOu are not gonna need it
 
