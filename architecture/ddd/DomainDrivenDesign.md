@@ -25,3 +25,7 @@
 - [https://eventmodeling.org/](https://eventmodeling.org/)
 - [https://www.eventstorming.com/](https://www.eventstorming.com/)
 - [miro.com](miro.com)
+
+### Video
+- [Mauro Servienti - Talk Session: All Our Aggregates Are Wrong](https://www.youtube.com/watch?v=KkzvQSuYd5I)
+- [Developing microservices with aggregates - Chris Richardson](https://www.youtube.com/watch?v=7kX3fs0pWwc)
