@@ -3,12 +3,15 @@
 ## Intro
 This repo consists of my notes & code snippets about `Clean Code`, `Architecture` and `Design Patterns`.
 
+## Clean Code & Principles
+- [Clean Code & Principles](clean_code/CleanCode.md)
+- [Dependency Inversion](clean_code/DependencyInversion.md)
+
 ## Architecture
 - [Clean Architecture](architecture/CleanArchitecture.md)
 - [Domain Driven Design](architecture/ddd/DomainDrivenDesign.md)
 - [CQRS](architecture/CQRS.md)
 - [Event Sourcing](architecture/EventSourcing.md)
-
 ## Design Patterns
 - Structural
     - [Facade](design_patterns/structural/facade.md)
