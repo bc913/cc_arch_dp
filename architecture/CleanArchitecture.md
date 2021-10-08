@@ -188,5 +188,8 @@ Hexagonal architecture is also known known as `Ports/Adapters`. Check this [link
 ### Ian Cooper
 - [Implementing the Clean Architecture in .NET Core - Ian Cooper](https://www.youtube.com/watch?v=IAcxetnsiCQ)
 - [On .NET Live - Commands, Queries, and Clean Architecture](https://www.youtube.com/watch?v=IRvDGPbxdTs)
+
+### Gill Cleeren
+- [Gill CLEEREN: Clean architecture with ASP.NET Core | UCP2019](https://www.youtube.com/watch?v=BxtHt7tsX-c)
 ### Misc
 - [Clean Architecture - .NET Core 5 Web API Microservices - Fundamentals](https://www.youtube.com/watch?v=TEeb0Hba8jI)
