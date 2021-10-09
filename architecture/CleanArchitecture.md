@@ -151,12 +151,14 @@ Hexagonal architecture is also known known as `Ports/Adapters`. Check this [link
 - [FluentValidation](https://github.com/FluentValidation/FluentValidation)
 - [Ardalis.GuardClauses](https://github.com/ardalis/GuardClauses)
 - [Ardalis.ApiEndpoints](https://github.com/ardalis/ApiEndpoints)
-- [Shouldly](https://github.com/shouldly/shouldly)
 - [CsvHelper](https://github.com/JoshClose/CsvHelper)
 - [NSwag](https://github.com/RicoSuter/NSwag)
 - [PapercutStmp - Email server](https://github.com/ChangemakerStudios/Papercut-SMTP)
   - [Docker containerized PapercutStmp](https://hub.docker.com/r/jijiechen/papercut)
-
+### Testing
+- [Shouldly](https://github.com/shouldly/shouldly)
+- [FluentAssertions](https://github.com/fluentassertions/fluentassertions)
+  - [MsTest Migration Tips](https://fluentassertions.com/tips/#mstest-migration)
 
 ## Open Source Projects
 - [Clean Architecture template by Steve Smith](https://github.com/ardalis/CleanArchitecture)
