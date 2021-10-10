@@ -26,3 +26,6 @@ This repo consists of my notes & code snippets about `Clean Code`, `Architecture
 - Creational
     - [Singleton](design_patterns/creational/singleton.md)
 
+## Library & API Design
+- [Framework Design Guidelines - .NET](https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/)
+- [Open source library development guidance - .NET](https://docs.microsoft.com/en-us/dotnet/standard/library-guidance/)
