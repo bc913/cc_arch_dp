@@ -199,3 +199,4 @@ Hexagonal architecture is also known known as `Ports/Adapters`. Check this [link
 - [Gill CLEEREN: Clean architecture with ASP.NET Core | UCP2019](https://www.youtube.com/watch?v=BxtHt7tsX-c)
 ### Misc
 - [Clean Architecture - .NET Core 5 Web API Microservices - Fundamentals](https://www.youtube.com/watch?v=TEeb0Hba8jI)
+- [Microservice Series - From Zero to Hero by Wolfgang Ofner](https://www.programmingwithwolfgang.com/microservice-series-from-zero-to-hero)
