@@ -159,6 +159,15 @@ Hexagonal architecture is also known known as `Ports/Adapters`. Check this [link
 - [Shouldly](https://github.com/shouldly/shouldly)
 - [FluentAssertions](https://github.com/fluentassertions/fluentassertions)
   - [MsTest Migration Tips](https://fluentassertions.com/tips/#mstest-migration)
+### Code Coverage
+- [A Guide to Code Coverage Tools for C#](https://blog.ndepend.com/guide-code-coverage-tools/)
+- [Coverlet](https://github.com/coverlet-coverage/coverlet)
+- [OpenCover](https://github.com/OpenCover/opencover)
+- [CodeCov](https://about.codecov.io/)
+- [NCrunch](https://www.ncrunch.net/)
+- [NDepend](https://www.ndepend.com/)
+- [NCover](https://www.ncover.com/)
+- [Coveralls](https://coveralls.io/)
 
 ## Open Source Projects
 - [Clean Architecture template by Steve Smith](https://github.com/ardalis/CleanArchitecture)
